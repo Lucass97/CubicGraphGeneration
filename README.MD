@@ -12,7 +12,7 @@ L'implementazione prende, da quanto formulato nel paper "Fast Generation of Cubi
 1) Enumerazione dei grafi cubici primi;
 2) Enumerazione di tutti gli altri grafi cubici tramite applicazione ricorsiva di una stessa trasformazione ai suddetti.
 
-Per enumerare i grafi cubici primi [[1]](#funzioni-rilevanti)(grafi cubici i cui archi sono tutti irriducibili) si effettuano ricorsivamente tre trasformazioni, partendo dal grafo K4[2]:
+Per enumerare i grafi cubici primi [[1]](#funzioni-rilevanti)(grafi cubici i cui archi sono tutti irriducibili) si effettuano ricorsivamente tre trasformazioni, partendo dal grafo K4 [[2]](#funzioni-rilevanti):
 
 1) Adjacent Diamond Insertion [[3]](#funzioni-rilevanti);
 2) Non-Adjacent Diamond Insertion [[4]](#funzioni-rilevanti);
@@ -57,20 +57,22 @@ int getSpareVertices(Graph* graph, int* spareVertices, int size)
 
 int adjDiamondInsertion(Graph* graph, int src, int dest) [3]
 /*
- * Funzione che genera una struttura K4- (K4 a cui viene tolto un arco) a partire dai nodi "Spare" e collega i due nodi della struttura con grado 2 
- * ai nodi src e dest del grafo passato come parametro.
+ * Funzione che genera una struttura K4- (K4 a cui viene tolto un arco) a partire dai nodi "Spare" 
+ * e collega i due nodi della struttura con grado 2 ai nodi src e dest del grafo passato come parametro.
  */
 
 int nonAdjDiamondInsertion(Graph* graph, int src1, int dest1, int src2, int dest2) [4]
 /*
- * Funzione che genera una struttura K4- (K4 a cui viene tolto un arco) a partire dai nodi "Spare" e collega i due nodi della struttura con grado 2 
+ * Funzione che genera una struttura K4- (K4 a cui viene tolto un arco) a partire dai nodi "Spare" 
+ * e collega i due nodi della struttura con grado 2 
  * a 2 nuovi nodi, i quali vengono connessi uno a src1 e dest1 e il rimanente a src2 e dest2 del grafo passato come parametro.
  * */
 
 
 int lollipopInsertion(Graph* graph, int src, int dest) [5]
 /*
- * Funzione che genera una struttura K4+ (K4 a cui viene tolto un arco e aggiunto un nuovo nodo che viene collegato agli endpoint dell'arco rimosso) a partire dai nodi "Spare" e collega il nodo della struttura con grado 2 
+ * Funzione che genera una struttura K4+ (K4 a cui viene tolto un arco e aggiunto un nuovo nodo
+ * che viene collegato agli endpoint dell'arco rimosso) a partire dai nodi "Spare" e collega il nodo della struttura con grado 2 
  * a 1 nuovo nodo, il quale viene connesso a src e dest del grafo passato come parametro.
  * */
 
@@ -97,18 +99,21 @@ int irreducibilityCondition3(Graph* graph, Edge* edge)
 
 void DFSforCycle(Graph* g, TriangleList* trianglelist, TetraList* tetraList, EdgeList* pathEdgeList, int* visited, int n, int vert, int start, int* count, int triangles)
 /*
- * Funzione richiamata da findTriangles/findTetragons che identifica i cicli di lunghezza 3/4, alloca un triangolo/tetragono e li memorizza nella rispettiva lista.
+ * Funzione richiamata da findTriangles/findTetragons che identifica i cicli di lunghezza 3/4, 
+ * alloca un triangolo/tetragono e li memorizza nella rispettiva lista.
  * */
 
 void findTriangles(Graph* g, int update, TriangleList* trianglelist)
 void findTetragons(Graph* g, int update, TetraList* tetraList)
 /*
- * Un grafo è detto irriducibile(i.e. primo) se ogni suo arco è irriducibile; un arco è irriducibile se possiede almeno una di queste 3 caratteristiche (i.e. condizioni di irriducibilità):
+ * Un grafo è detto irriducibile(i.e. primo) se ogni suo arco è irriducibile; 
+ * un arco è irriducibile se possiede almeno una di queste 3 caratteristiche (i.e. condizioni di irriducibilità):
  * 1) L'arco è un bridge( i.e. se rimosso, aumenta il # di componenti connesse del grafo);
  * 2) Uno degli endpoint dell'arco fa parte di un triangolo( ciclo di 3) di cui l'arco non fa parte;
  * 3) Entrambi gli endpoint dell'arco fanno parte di un tetragono( ciclo di 4) di cui l'arco non fa parte.
  * 
- * Per verificare l'irriducibilità di un grafo, generiamo inizialmente le liste di triangoli e tetragoni presenti in esso per poi verificare su ogni arco le 3 condizioni messe in or; 
+ * Per verificare l'irriducibilità di un grafo, generiamo inizialmente le liste di triangoli e tetragoni presenti in esso
+ * per poi verificare su ogni arco le 3 condizioni messe in or; 
  * qualora un qualsiasi arco sia riducibile allora anche il grafo risulterà riducibile.
  * 
  * */
