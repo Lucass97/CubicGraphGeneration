@@ -1,0 +1,21 @@
+# Output files
+*.o
+*.out
+*.exe
+
+# Build directory
+/build/
+
+# Dependency files
+*.d
+
+# Editor/IDE specific files
+.vscode/
+*.vscode/
+*.sublime-project
+*.sublime-workspace
+*.idea/
+*.cproject
+*.project
+
+CubicGraphGen
